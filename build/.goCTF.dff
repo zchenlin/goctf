@@ -1,0 +1,13 @@
+Input image file name:: 04.20.2019_CDC_TNP_tilt30_0040_30.0_DW.mrc
+Output diagnostic image file name:: 04.200.mrc
+Pixel size:: 40
+Acceleration voltage:: 300
+Spherical aberration:: 2.7
+Amplitude contrast:: 0.07
+Size of amplitude spectrum to compute:: 512
+Minimum resolution:: 30.0
+Maximum resolution:: 5.0
+Minimum defocus:: 5000.0
+Maximum defocus:: 50000.0
+Defocus search step:: 500.0
+Slower, per particle refinement ?  :: No

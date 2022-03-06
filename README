@@ -1,0 +1,90 @@
+magoCTF
+
+If you want to build goCTF from source, see below.
+
+1. Check dependencies
+
+goCTF has several dependencies:
+* wxWidgets >= 3.0
+* Either FFTW or Intel's Math Kernel Library (MKL)
+* zlib
+* LibTIFF
+* GNU Scientific Library (GSL) >= 2.5
+
+1.1 wxWidgets
+
+To check that you have wxWidgets installed, do:
+
+$ which wx-config
+
+To check you have the correct version of wxWidgets, do:
+
+$ wx-config --version
+
+If you have several versions of wxWidgets installed, you may have to do e.g.:
+
+$ wx-config-3.0 --version
+
+or:
+
+$ /path/to/wx-config --version
+
+and add the following flag to your configure line:
+--with-wx-config=/path/to/wx-config-3.0
+
+
+1.2 Intel's Math Kernel Library (MKL)
+
+If it is available on your system, the configure script should detect Intel's 
+Math Kernel Library (MKL) and ensure that the program will be linked against 
+it. This is preferred as it gives a significant performance boost.
+
+
+1.3 FFTW
+
+If the MKL is not available, you need to ensure FFTW is installed.
+
+1.4 zlib
+
+This is needed by libtiff for handling compressed files.
+You may need to specify where the zlib files are installed on your system
+using the following configure line:
+--with-zlib-dir=/path/to/zlib/install
+
+1.5 LibTIFF
+
+This library is needed to enable reading and/or writing TIFF files.
+You may need to specify where the LibTIFF files are installed on your system
+using the following configure option:
+--with-libtiff-dir=/path/to/libtiff/install
+
+1.6 GNU Scientific Library (GSL)
+
+To check if you have GSL installed, do:
+
+$ gsl-config
+
+To ensure you have the proper version of GSL, do:
+
+$ gsl-config --version
+
+
+
+2. Configure
+
+See configure --help for details of available options. 
+
+For optimal performance, we recommend: --disable-debugmode --enable-mkl
+
+
+
+3. Build and install
+
+The recommended way to build and install goCTF is below.
+
+$ cd /path/to/uncompressed/folder
+$ mkdir build
+$ cd build
+$ ../configure [options]
+$ make
+$ make install
