@@ -1,0 +1,5 @@
+# Output from CTFFind version 1.2.0, run on 2022-03-20 11:49:08
+# Input file: test.mrc ; Number of micrographs: 1
+# Pixel size: 1.144 Angstroms ; acceleration voltage: 300.0 keV ; spherical aberration: 2.70 mm ; amplitude contrast: 0.07
+# Box size: 512 pixels ; min. res.: 30.0 Angstroms ; max. res.: 5.0 Angstroms ; min. def.: 50000.0 um; max. def. 500000.0 um
+# Columns: #1 - micrograph number; #2 - defocus 1 [Angstroms]; #3 - defocus 2; #4 - azimuth of astigmatism; #5 - additional phase shift [radians]; #6 - cross correlation; #7 - spacing (in Angstroms) up to which CTF rings were fit successfully

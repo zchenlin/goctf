@@ -37,7 +37,7 @@ parser.add_option("-v", "--verbose", action="store_true", dest="verbose", help="
 options, args = parser.parse_args()
 
 if options.input_star is None:
-    print 'Missing a required option.\n'
+    print ('Missing a required option.\n')
     parser.print_help()
     sys.exit(-1)
 
@@ -65,46 +65,46 @@ def main():
             micrograph_name_entry = int(line.split()[1].replace('#', ''))
             rln_micrograph_name_found = True
             if options.verbose is True:
-                print 'Found _rlnMicrographName entry: {:d}'.format(micrograph_name_entry)
+                print ('Found _rlnMicrographName entry: {:d}'.format(micrograph_name_entry))
 
         if line.find('_rlnCoordinateX') > -1:
             coordinate_x_entry = int(line.split()[1].replace('#', ''))
             rln_coordinate_x_found = True
             if options.verbose is True:
-                print 'Found _rlnCoordinateX entry: {:d}'.format(coordinate_x_entry)
+                print ('Found _rlnCoordinateX entry: {:d}'.format(coordinate_x_entry))
 
         if line.find('_rlnCoordinateY') > -1:
             coordinate_y_entry = int(line.split()[1].replace('#', ''))
             rln_coordinate_y_found = True
             if options.verbose is True:
-                print 'Found _rlnCoordinateY entry: {:d}'.format(coordinate_y_entry)
+                print ('Found _rlnCoordinateY entry: {:d}'.format(coordinate_y_entry))
 
         if line.find('_rlnDefocusU') > -1:
             defocus_u_entry = int(line.split()[1].replace('#', ''))
             rln_defocus_u_found = True
             if options.verbose is True:
-                print 'Found _rlnDefocusU entry: {:d}'.format(defocus_u_entry)
+                print ('Found _rlnDefocusU entry: {:d}'.format(defocus_u_entry))
 
         if line.find('_rlnDefocusV') > -1:
             defocus_v_entry = int(line.split()[1].replace('#', ''))
             rln_defocus_v_found = True
             if options.verbose is True:
-                print 'Found _rlnDefocusV entry: {:d}'.format(defocus_v_entry)
+                print ('Found _rlnDefocusV entry: {:d}'.format(defocus_v_entry))
 
         if particle_start == 0 and line.find('@') > -1:
             particle_start = i
             if options.verbose is True:
-                print 'First particle start from line {:d}'.format(particle_start)
+                print ('First particle start from line {:d}'.format(particle_start))
 
         if particle_start > 0:
             if line.find('@') < 0:
                 particle_end = i - 1
                 if options.verbose is True:
-                    print 'Last particle ends at line {:d}'.format(particle_end)
+                    print ('Last particle ends at line {:d}'.format(particle_end))
             elif i == len(star_contents) - 1:
                 particle_end = i
                 if options.verbose is True:
-                    print 'Last particle ends at line {:d}'.format(particle_end)
+                    print ('Last particle ends at line {:d}'.format(particle_end))
 
         if rln_micrograph_name_found is False and i == len(star_contents) - 1:
             raise Exception('Unable to find the label _rlnMicrographName')
@@ -127,7 +127,7 @@ def main():
     # Initialize a list with as many members as there are particles and set the value to 0 as a placeholder.
     li = [0 for x in range(particle_end - particle_start + 1)]
     num_particles = particle_end - particle_start + 1
-    print 'Total number of particles in the input particles.star file is: {:d}'.format(num_particles)
+    print ('Total number of particles in the input particles.star file is: {:d}'.format(num_particles))
 
     i = 0
     for line in star_contents:
@@ -142,7 +142,7 @@ def main():
     for k in range(len(a)):
         if k == 0:
             star_out_name = a[k][micrograph_name_entry - 1].replace('.mrc', '_go.star')
-            print star_out_name
+            print (star_out_name)
             link_src = a[k][micrograph_name_entry - 1]
             star_out_p = open(star_out_name, 'w')
             for n in range(particle_start):
@@ -156,7 +156,7 @@ def main():
                 star_out_p.writelines('{} \n'.format(sorted_line))
                 star_out_p.close()
                 star_out_name = a[k + 1][micrograph_name_entry - 1].replace('.mrc', '_go.star')
-                print star_out_name
+                print (star_out_name)
                 star_out_p = open(star_out_name, 'w')
                 for n in range(particle_start):
                     star_out_p.writelines(star_contents[n])
@@ -171,7 +171,7 @@ def main():
                 # star_out_p.close()
             else:
                 star_out_name = a[k][micrograph_name_entry - 1].replace('.mrc', '_go.star')
-                print star_out_name
+                print (star_out_name)
                 star_out_p = open(star_out_name, 'w')
                 for n in range(particle_start):
                     star_out_p.writelines(star_contents[n])
